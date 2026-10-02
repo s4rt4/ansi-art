@@ -1,0 +1,28 @@
+[workspace]
+resolver = "2"
+members = ["crates/ansi-core", "crates/ansi-cli", "app/src-tauri"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+ansi-core = { path = "crates/ansi-core" }
+image = "0.25"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+clap = { version = "4", features = ["derive"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+
+# Image processing is painfully slow unoptimized, even while developing.
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.dev.package.ansi-core]
+opt-level = 3

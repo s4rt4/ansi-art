@@ -1,0 +1,20 @@
+[package]
+name = "ansi-art-app"
+description = "Desktop GUI for ansi-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "ansi_art_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+ansi-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"

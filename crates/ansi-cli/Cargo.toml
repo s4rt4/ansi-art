@@ -1,0 +1,16 @@
+[package]
+name = "ansi-cli"
+description = "Command line front-end for ansi-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "ansi-art"
+path = "src/main.rs"
+
+[dependencies]
+ansi-core = { workspace = true, features = ["clap"] }
+clap.workspace = true
+terminal_size = "0.4"
+enable-ansi-support = "0.2"
